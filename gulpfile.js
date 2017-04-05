@@ -3,6 +3,11 @@ var browserSync = require('browser-sync');
 var sass        = require('gulp-sass');
 var prefix      = require('gulp-autoprefixer');
 var cp          = require('child_process');
+var gutil       = require('gulp-util');
+var exec        = require('child_process').exec;
+var connect     = require('gulp-connect');
+var run         = require('gulp-run');
+var runSequence = require('run-sequence');
 
 var messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
@@ -64,3 +69,38 @@ gulp.task('watch', function () {
  * compile the jekyll site, launch BrowserSync & watch files.
  */
 gulp.task('default', ['browser-sync', 'watch']);
+
+// Install bundler gem
+gulp.task('install:bundler', function() {
+  return gulp.src('')
+     .pipe(run('gem install bundler'))
+    .on('error', gutil.log);
+});
+
+// Updates Ruby gems
+gulp.task('update:bundle', ['install:bundler'],  function() {
+  return gulp.src('')
+    .pipe(run('bundle install'))
+    .on('error', gutil.log);
+});
+
+// Runs Jekyll build
+gulp.task('build:jekyll', function() {
+  var shellCommand = 'bundle exec jekyll build';
+  return gulp.src('')
+    .pipe(run(shellCommand))
+    .on('error', gutil.log);
+});
+
+// Serve the generated _site folder
+gulp.task('server', () => {
+  connect.server({
+    root: ['_site'],
+    port: process.env.PORT || 5000,
+  });
+})
+
+// Launch the needed tasks to deploy the app in heroku
+gulp.task('heroku:production', ['update:bundle'], function() {
+  runSequence('sass', 'build:jekyll');
+})
