@@ -69,8 +69,20 @@ gulp.task('watch', function () {
  */
 gulp.task('default', ['browser-sync', 'watch']);
 
+gulp.task('install:npm',  function() {
+  return gulp.src('')
+    .pipe(run('npm install bower'))
+    .on('error', gutil.log);
+});
+
+gulp.task('install:bower', ['install:npm'],  function() {
+  return gulp.src('')
+    .pipe(run('bower install'))
+    .on('error', gutil.log);
+});
+
 // Install bundler gem
-gulp.task('install:bundler', function() {
+gulp.task('install:bundler', ['install:bower'], function() {
   return gulp.src('')
      .pipe(run('gem install bundler'))
     .on('error', gutil.log);
