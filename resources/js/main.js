@@ -39,9 +39,13 @@ $(document).ready(function(){
     $(document).on('click', 'a.contributors-modal', function(e) {
         e.preventDefault();
         var target = $(this).data('target');
-        $('#modal-description').on('hidden.bs.modal', function () {
+        if($(this).closest('.project').hasClass('.modal-body')) {
+            $('#modal-description').on('hidden.bs.modal', function () {
+                $(target).modal('show');
+            });
+        } else {
             $(target).modal('show');
-        });
+        }
         $('#modal-description').modal('hide');
     });
 });
