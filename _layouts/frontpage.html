@@ -35,15 +35,7 @@
       <div class="container inner-splash" style="margin-top: 135px;">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center">
-            <div class="swirl">
-              <img src="{{ site.baseurl }}/resources/img/scala-center-swirl.png">
-            </div>
-            <div class="swirl-text">
-              <h1><b>scala</b>center</h1>
-              <div>
-                For open source. For education.
-              </div>
-            </div>
+            <img src="/resources/img/scala-center-main-logo@2x.png" width="100%" alt="ScalaCenter. For Open Source. For Education" >
           </div>
         </div>
       </div>
@@ -386,6 +378,17 @@
                 $('.popover .arrow').css('left', $(this).offset().left + $(this).width()/2 - $('.popover').offset().left);
             });
         });
+
+        // Who we are effects
+        $('.who-are-we .circular').mouseenter(function() {
+            $(this).addClass('active');
+            $('.who-are-we .circular:not(.active)').stop().animate({'opacity':'.3'}, 300);
+        });
+
+          $('.who-are-we .circular').mouseleave(function() {
+              $('.who-are-we .circular').removeClass('active');
+              $('.who-are-we .circular').stop().animate({'opacity':'1'}, 300);
+          });
       });
     </script>
   </body>

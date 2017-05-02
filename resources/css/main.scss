@@ -590,7 +590,7 @@ body.home {
 
     .member-info {
       margin-top: 35px;
-      min-height: 300px;
+      min-height: 260px;
       position: relative;
 
       h4 {
@@ -614,8 +614,9 @@ body.home {
 
     .current-projects {
       border-radius: 8px;
-      margin-top: 25px;
+      margin: 25px auto;
       height: 350px;
+      max-width: 280px;
       position: relative;
 
       .project {
@@ -648,7 +649,7 @@ body.home {
     .us {
       display: inline-block;
       position: relative;
-      opacity: 0.3;
+      opacity: 1;
       transition: all 0.2s;
       margin: 30px 20px;
       cursor: pointer;
