@@ -133,6 +133,7 @@
 
 
     <div class="dark-blue-stripe">
+      <div id="popover-spacer"></div>
       <div class="vertical-spacer-top"></div>
       <div class="container">
         <div class="row">
@@ -367,6 +368,7 @@
         $(document).on('click', '.close-popover', function (e) {
             e.preventDefault();
             $(this).closest('.popover').popover('hide');
+            $('#popover-spacer').animate({'height': 0});
         });
         $('.home-popovers a').each(function () {
             $(this).data('html', true);
@@ -374,8 +376,14 @@
             $(this).click(function(e){
                 e.preventDefault();
                 $('.popover').popover('hide');
-                $(this).popover('toggle');
-                $('.popover .arrow').css('left', $(this).offset().left + $(this).width()/2 - $('.popover').offset().left);
+                var button = $(this);
+                setTimeout(function () {
+                    button.popover('show');
+                    $('.popover .arrow').css('left', button.offset().left + 73 - $('.popover').offset().left);
+                    setTimeout(function() {
+                        $('#popover-spacer').animate({'height': $('.popover').height() - 100});
+                    }, 150);
+                }, 150);
             });
         });
 
