@@ -162,6 +162,7 @@
                     {% assign homeProjects = site.projects | where: "home", "true" %}
                     {% for project in homeProjects %}
                       <div class="project">
+                          <div class="status {{ project.status|downcase }}">{{ project.status }}</div>
                           <div class="icon-status {{ project.status|downcase }}">
                             <i class="fa fa-{{ project.status|downcase }}"></i>
                           </div>

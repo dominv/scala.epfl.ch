@@ -498,6 +498,7 @@ body.home {
   /* HOME OUR PROJECTS */
   .projects {
     padding-left: 1%;
+    padding-top: 10px;
     .project {
       position: relative;
       width: 18%;
@@ -513,6 +514,61 @@ body.home {
 
       &:last-of-type {
         margin-right: 0px;
+      }
+
+      &:hover {
+        .status {
+          display: block;
+        }
+      }
+
+      .status {
+        display: none;
+        font-size: 12px;
+        font-weight: bold;
+        color: #ffffff;
+        text-transform: uppercase;
+        padding: 2px 10px;
+        border-radius: 2px;
+        //background-color: #5c6367;
+        background-color: #d0011b;
+        margin-left: 10px;
+        position: absolute;
+        right: 0;
+        margin-right: -65px;
+        top: -44px;
+        &:after {
+          content: " ";
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          width: 0;
+          height: 0;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+
+          border-top: 7px solid #d0011b;
+        }
+
+        &.active {
+          background-color: #f1592a;
+          margin-right: -25px;
+
+          &:after {
+            border-top-color: #f1592a;
+          }
+        }
+
+        &.completed {
+          background-color: #7ed321;
+          margin-right: -40px;
+
+          &:after {
+            border-top-color: #7ed321;
+          }
+        }
       }
 
       .icon-status {
