@@ -42,7 +42,7 @@
       <div class="container" style="margin-top: 60px;">
         <div class="vertical-spacer-top"></div>
         <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center">
+          <div class="col-md-12 text-center">
             <div class="objectives">
               A new not-for-profit center established at EPFL.<br/>
               <b>Focused on:</b>
@@ -372,29 +372,30 @@
             $('#popover-spacer').animate({'height': 0});
         });
         $('.home-popovers a').each(function () {
-            $(this).data('html', true);
-            $(this).data('content', $($(this).attr('href')).html());
-            $(this).click(function(e){
-                e.preventDefault();
-                $('.popover').popover('hide');
-                var button = $(this);
-                setTimeout(function () {
-                    button.popover('show');
-                    $('.popover .arrow').css('left', button.offset().left + 73 - $('.popover').offset().left);
-                    setTimeout(function() {
-                        $('#popover-spacer').animate({'height': $('.popover').height() - 100});
-                    }, 150);
+            var button = $(this);
+            button.data('html', true);
+            button.data('content', $($(this).attr('href')).html());
+        });
+        $(document).on('click', '.home-popovers a', function(e){
+            var button = $(this);
+            e.preventDefault();
+            $('.popover').popover('hide');
+            setTimeout(function () {
+                button.popover('show');
+                $('.popover .arrow').css('left', button.offset().left + 73 - $('.popover').offset().left);
+                setTimeout(function() {
+                    $('#popover-spacer').animate({'height': $('.popover').height() - 100});
                 }, 150);
-            });
+            }, 150);
         });
 
         // Who we are effects
-        $('.who-are-we .circular').mouseenter(function() {
-            $(this).addClass('active');
+        $('.who-are-we .us').mouseenter(function() {
+            $(this).find('.circular').addClass('active');
             $('.who-are-we .circular:not(.active)').stop().animate({'opacity':'.3'}, 300);
         });
 
-          $('.who-are-we .circular').mouseleave(function() {
+          $('.who-are-we .us').mouseleave(function() {
               $('.who-are-we .circular').removeClass('active');
               $('.who-are-we .circular').stop().animate({'opacity':'1'}, 300);
           });
