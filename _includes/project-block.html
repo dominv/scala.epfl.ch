@@ -26,10 +26,10 @@
         <div class="clearfix"></div>
         <div class="content">
             {{ project.description }}
-            {% if project.content %}
-            <a href="#" class="read-more">
-                <i class="fa fa-plus"></i> Read more
-            </a>
+            {% if project.content.size > 1 %}
+                <a href="#" class="read-more">
+                    <i class="fa fa-plus"></i> Read more
+                </a>
             {% endif %}
         </div>
         <div class="hidden modal-content-text">
