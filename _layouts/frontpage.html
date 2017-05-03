@@ -382,7 +382,11 @@
             $('.popover').popover('hide');
             setTimeout(function () {
                 button.popover('show');
-                $('.popover .arrow').css('left', button.offset().left + 73 - $('.popover').offset().left);
+                if(button.attr('href') == '#education') {
+                    $('.popover .arrow').css('left', button.offset().left + 65 - $('.popover').offset().left);
+                } else {
+                    $('.popover .arrow').css('left', button.offset().left + 73 - $('.popover').offset().left);
+                }
                 setTimeout(function() {
                     $('#popover-spacer').animate({'height': $('.popover').height() - 100});
                 }, 150);

@@ -3,7 +3,7 @@
 {% if project.active %}
 <div class="col-md-6">
     <div class="project">
-        <div class="header">
+        <div class="header" data-title="{{ project.name }}">
             {% if project.logo %}
             <img class="project-logo" src="{{ project.logo }}" alt="{{ project.name }}"/>
             {% else %}
@@ -26,9 +26,11 @@
         <div class="clearfix"></div>
         <div class="content">
             {{ project.description }}
+            {% if project.content %}
             <a href="#" class="read-more">
                 <i class="fa fa-plus"></i> Read more
             </a>
+            {% endif %}
         </div>
         <div class="hidden modal-content-text">
             {{ project }}
