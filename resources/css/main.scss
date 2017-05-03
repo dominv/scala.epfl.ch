@@ -756,6 +756,10 @@ body.home {
 }
 
 /* PROJECTS */
+div.no-results {
+  display: none;
+}
+
 div.search {
   margin-bottom: 24px;
 
@@ -1011,6 +1015,8 @@ div.search {
       font-size: 20px;
       color: #f1592a;
       margin: 10px 0;
+      max-width: 70%;
+      line-height: 24px;
     }
 
     a {
@@ -1033,6 +1039,7 @@ div.search {
         margin-bottom: 10px;
         a {
           text-decoration: none;
+          cursor: pointer;
         }
       }
 
@@ -1078,6 +1085,13 @@ div.search {
         right: auto;
       }
     }
+  }
+}
+
+
+.contributors-dialog, .description-dialog {
+  .modal-dialog {
+    margin-top: 10%;
   }
 }
 

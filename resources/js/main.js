@@ -7,20 +7,47 @@
 
 $(document).ready(function(){
     var search = $('.search input');
-    console.log(search);
     search.keyup(function() {
-        console.log('key');
         var value = $(this).val();
         value = value ? value.toLowerCase() : null;
+        var countActive = 0, countCompleted = 0;
+        if(value) {
+            $('.advisory').css('display', 'none');
+        } else {
+            $('.advisory').css('display', 'block');
+        }
+
         $('.project').each(function () {
-            var title = $(this).find('h2').text();
+            var title = $(this).find('.header').data('title');
             var text = $(this).find('.content').text();
-            if(value && (text.toLowerCase().indexOf(value) == -1 && title.toLowerCase().indexOf(value) == -1)) {
+            if(value && ((!text || text.toLowerCase().indexOf(value) == -1) && (!title || title.toLowerCase().indexOf(value) == -1))) {
                 $(this).parent().css('display', 'none');
             } else {
+                if($(this).closest('.project-list').hasClass('active')) {
+                    countActive++;
+                } else {
+                    countCompleted++;
+                }
                 $(this).parent().css('display', 'block');
             }
         });
+        /* Hide unneeded blocks: */
+        if(countActive == 0) {
+            $('.title.active h2').css('display', 'none');
+        } else {
+            $('.title.active h2').css('display', 'block');
+        }
+        if(countCompleted == 0) {
+            $('.title.completed h2').css('display', 'none');
+        } else {
+            $('.title.completed h2').css('display', 'block');
+        }
+
+        if(countActive + countCompleted == 0) {
+            $('.no-results').css('display', 'block');
+        } else {
+            $('.no-results').css('display', 'none');
+        }
     });
 
     /* PROJECT DESCRIPTION MODALS */

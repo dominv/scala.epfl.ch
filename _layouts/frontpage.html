@@ -107,23 +107,14 @@
       </div>
       <div class="col-md-12">
         <div class="the-courses">The courses:</div>
+        {% assign courses = site.data.education.courses %}
         <ul class="course-list">
-          <li>
-            <div class="title">Functional Programming Principles in Scala</div>
-            <div class="description">Taught by: Martin Odersky</div>
-          </li>
-          <li>
-            <div class="title">Functional Program Design in Scala</div>
-            <div class="description">Taught by: Martin Odersky</div>
-          </li>
-          <li>
-            <div class="title">Parallel Programming</div>
-            <div class="description">Taught by: Viktor Kuncak, Aleksandar Prokopec</div>
-          </li>
-          <li>
-            <div class="title">Big Data Analysis in Scala and Spark</div>
-              <div class="description">Taught by: Heather Miller</div>
-          </li>
+          {% for course in courses %}
+            <li>
+              <a class="title" href="{{ course.url }}" target="_blank">{{ course.title }}</a>
+              <div class="description">Taught by: {{ course.taught_by }}</div>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <div class="col-md-12 text-left">
@@ -382,7 +373,11 @@
             $('.popover').popover('hide');
             setTimeout(function () {
                 button.popover('show');
-                $('.popover .arrow').css('left', button.offset().left + 73 - $('.popover').offset().left);
+                if(button.attr('href') == '#education') {
+                    $('.popover .arrow').css('left', button.offset().left + 65 - $('.popover').offset().left);
+                } else {
+                    $('.popover .arrow').css('left', button.offset().left + 73 - $('.popover').offset().left);
+                }
                 setTimeout(function() {
                     $('#popover-spacer').animate({'height': $('.popover').height() - 100});
                 }, 150);
