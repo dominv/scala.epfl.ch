@@ -6,6 +6,7 @@
  **************************/
 
 $(document).ready(function(){
+    /* SEARCH FUNCTIONALITY */
     var search = $('.search input');
     search.keyup(function() {
         var value = $(this).val();
@@ -61,6 +62,13 @@ $(document).ready(function(){
         container.find('.modal-content-text').removeClass('hidden');
         $('#modal-description').modal('show');
     });
+
+
+    // If selected from home and available, open the requested project description modal:
+    var projectLabel = window.location.href.split('#')[1];
+    if(projectLabel) {
+        $('#' + projectLabel + ' a.read-more').trigger('click');
+    }
 
     /* PROJECT CONTRIBUTOR MODALS */
     $(document).on('click', 'a.contributors-modal', function(e) {

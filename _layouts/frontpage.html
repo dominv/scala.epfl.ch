@@ -131,12 +131,12 @@
           <div class="col-md-10 text-center col-md-offset-1">
             <h2>Projects that we've worked on</h2>
             <div class="row" id="projects-logo">
-              <div class="col-md-2 col-xs-4"><img width="100%" src="/resources/img/scala@2x.png" alt="Scala"></div>
-              <div class="col-md-2 col-xs-4"><img width="100%" src="/resources/img/sbt@2x.png" alt="SBT"></div>
-              <div class="col-md-2 col-xs-4"><img width="100%" src="/resources/img/Community@2x.png" alt="Community"></div>
-              <div class="col-md-2 col-xs-4"><img width="100%" src="/resources/img/scastie@2x.png" alt="Scastie"></div>
-              <div class="col-md-2 col-xs-4"><img width="100%" src="/resources/img/scaladex-brand@2x.png" alt="Scaladex"></div>
-              <div class="col-md-2 col-xs-4"><img width="100%" src="/resources/img/coursera@2x.png" alt="Coursera"></div>
+              <div class="col-md-2 col-xs-4"><a href="https://www.scala-lang.org/" target="_blank"><img width="100%" src="/resources/img/scala@2x.png" alt="Scala"></a></div>
+              <div class="col-md-2 col-xs-4"><a href="http://www.scala-sbt.org/" target="_blank"><img width="100%" src="/resources/img/sbt@2x.png" alt="SBT"></a></div>
+              <div class="col-md-2 col-xs-4"><a href="http://scala-lang.org/community/" target="_blank"><img width="100%" src="/resources/img/Community@2x.png" alt="Community"></a></div>
+              <div class="col-md-2 col-xs-4"><a href="http://scastie.org/" target="_blank"><img width="100%" src="/resources/img/scastie@2x.png" alt="Scastie"></a></div>
+              <div class="col-md-2 col-xs-4"><a href="https://index.scala-lang.org/" target="_blank"><img width="100%" src="/resources/img/scaladex-brand@2x.png" alt="Scaladex"></a></div>
+              <div class="col-md-2 col-xs-4"><a href="https://www.coursera.org" target="_blank"><img width="100%" src="/resources/img/coursera@2x.png" alt="Coursera"></a></div>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@
                 <div class="projects">
                     {% assign homeProjects = site.projects | where: "home", "true" %}
                     {% for project in homeProjects %}
-                      <div class="project">
+                      <a href="/projects.html#{{ project.label }}" class="project">
                           <div class="status {{ project.status|downcase }}">{{ project.status }}</div>
                           <div class="icon-status {{ project.status|downcase }}">
                             <i class="fa fa-{{ project.status|downcase }}"></i>
@@ -162,7 +162,7 @@
                           {% else %}
                           <div class="text">{{ project.name }}</div>
                           {% endif %}
-                      </div>
+                      </a>
                     {% endfor %}
                 </div>
 
