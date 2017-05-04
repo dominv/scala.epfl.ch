@@ -647,11 +647,16 @@ body.home {
 
     .member-info {
       margin-top: 35px;
-      min-height: 260px;
+      min-height: 246px;
       position: relative;
+
+      h3 {
+        font-size: 28px;
+      }
 
       h4 {
         color: #f1592a;
+        font-size: 17px;
       }
 
       .member-name {
